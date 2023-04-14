@@ -11,17 +11,16 @@
 
     const fetchUsers =async()=>{
         const response = await 
-        fetch(`${process.env.REACT_APP_GITHUB_URL}
-        /users`,{
-            headers:{
-                Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-            }
-        })
+        fetch(`${process.env.REACT_APP_GITHUB_URL}/users`)
         const data = await response.json()
+        
 
         setUsers(data)
         setLoading(false)
+         
     }
+    console.log(process.env.REACT_APP_GITHUB_URL);
+     
    
     if(!loading){
 
@@ -36,7 +35,7 @@
           </div>
         )
     }else{
-        return  <h3>Loading...</h3>
+        return  <h3>Loading... </h3>
     }
 }
 
