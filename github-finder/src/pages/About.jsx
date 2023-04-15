@@ -1,4 +1,4 @@
- function About() {
+   function About() {
   return (
     <div>
         <h1 className='text-6xl mb-4'>Github Finder</h1>
@@ -20,7 +20,7 @@
       </p>
       <p className='text-lg text-gray-400'>
         Layout By: 
-        <a className='text-white' href='https://twitter.com/hassibmoddasser'>
+        <a className='text-white' href='https://www.linkedin.com/in/mohd-muneer-uddin-66b067207'>
            Mohd Muneer Uddin 
         </a>
       </p>
