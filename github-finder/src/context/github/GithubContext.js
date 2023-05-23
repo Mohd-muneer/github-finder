@@ -10,6 +10,7 @@ export const GithubProvider=({children})=>{
   const initialState={ 
     users:[],
     user:{},
+    repos:[],
     loading:false,
   }
 
@@ -20,7 +21,7 @@ export const GithubProvider=({children})=>{
       setLoading()
 
       const params =new URLSearchParams({
-        q:text
+        q:text,
       })
 
 
@@ -66,6 +67,32 @@ if (response.status ===404) {
  
 }
 
+// Get User repos 
+const getUserRepos =async(login)=>{
+  setLoading()
+
+  // to get all the repos remove line number 75-77 and in line 82 remove (?${params})
+  const params =new URLSearchParams({
+    sort: 'created',
+    per_page:10,
+  })
+ 
+
+
+const response = await fetch(`${ GITHUB_URL}/users/${login}/repos?${params}`,{
+    headers:{
+        Authorization:`token ${GITHUB_TOKEN}`,
+    },
+})
+const  data = await response.json()
+
+dispatch({
+  type:'GET_REPOS',
+  payload:data,
+})
+ 
+}
+
 //  clear users from state
      const clearUsers = () => dispatch({type:'CLEAR_USERS'})
 
@@ -80,10 +107,12 @@ if (response.status ===404) {
   <GithubContext.Provider value={{
     users: state.users,
     loading: state.loading,
-    user:state.user, 
+    user: state.user, 
+    repos: state.repos,
     searchUsers,
     clearUsers,
     getUser,
+    getUserRepos,
 
   }}>
     {children}
