@@ -7,7 +7,7 @@ import { type } from '@testing-library/user-event/dist/type'
 function UserSearch() { 
   const [text,setText]= useState('')
 
-  const{users,dispatch,clearUsers}= useContext(GithubContext)
+  const{users,dispatch}= useContext(GithubContext)
   const{setAlert}= useContext(AlertContext)
 
    const handleChange = (e) => setText(e.target.value)
@@ -51,7 +51,7 @@ function UserSearch() {
             {users.length >0 &&(
         <div>
             <button 
-            onClick={clearUsers} className="btn btn-ghost btn-lg">
+            onClick={ () => dispatch({type: 'CLEAR_USERS'})} className="btn btn-ghost btn-lg">
                 clear
             </button>
          </div>

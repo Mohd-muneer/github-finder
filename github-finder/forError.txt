@@ -3,4 +3,4 @@ change the token by generating a new token from github
 
 in github got to (setting> devloper settings> generate token> copy link of the new token)
 
-replace the new token from the by the old token in .env file 
+replace the new token by the old token in .env file 
