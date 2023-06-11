@@ -1,4 +1,4 @@
-if you are facing user.map error in the project 
+if you are facing any error in the project 
 change the token by generating a new token from github
 
 in github got to (setting> devloper settings> generate token> copy link of the new token)
